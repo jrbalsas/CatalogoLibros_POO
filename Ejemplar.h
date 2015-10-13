@@ -9,9 +9,10 @@
 #define	EJEMPLAR_H
 
 #include <string>
+#include "ItemCSV.h"
 
 /** Ejemplar de un catálogo de libros*/
-class Ejemplar {
+class Ejemplar: public ItemCSV {
 private:
     std::string _titulo;
     std::string _editorial;
@@ -30,6 +31,12 @@ public:
     std::string getTitulo() const;
     
     virtual std::string getID()=0;
+
+    //Interfaz ItemCSV
+    virtual std::string toCSV();
+    virtual void fromCSV(std::string linea);
+
+
     
 private:
     

@@ -5,8 +5,11 @@
  * @date 9 de octubre de 2015, 13:40
  */
 
+#include <sstream>
+
 #include "Revista.h"
 #include "Ejemplar.h"
+
 
 Revista::Revista(   std::string ISSN, std::string titulo, unsigned int anio, unsigned int numero,
                     std::string editorial, float precio)
@@ -47,4 +50,39 @@ std::string Revista::getISSN() const {
 
 std::string Revista::getID() {
     return this->getISSN();
+}
+
+std::string Revista::toCSV() {
+    std::stringstream ss;
+    std::string linea;
+    
+    
+    ss  << _ISSN << ';'
+        << _anio << ';'
+        << _numero << ';';
+
+    ss  << Ejemplar::toCSV();
+
+    
+    std::getline(ss,linea);
+    
+    return linea;
+}
+
+void Revista::fromCSV(std::string linea) {
+
+    std::stringstream ss(linea);
+    std::string lineaEjemplar;
+    
+    std::getline(ss,_ISSN,';');
+    ss>>_anio;
+    ss.ignore(); //ignoramos siguiente ';'
+    ss>>_numero;
+    ss.ignore();
+
+    
+    //Procesamos resto de la línea con la parte de Ejemplar
+    std::getline(ss,lineaEjemplar);
+    Ejemplar::fromCSV(lineaEjemplar);
+    
 }

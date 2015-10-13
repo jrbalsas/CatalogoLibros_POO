@@ -16,7 +16,7 @@ private:
     unsigned int _anio;
 public:
   
-    Revista( std::string ISSN,  std::string titulo, unsigned int anio, unsigned int numero,
+    Revista( std::string ISSN="",  std::string titulo="Sin titulo", unsigned int anio=0, unsigned int numero=0,
              std::string editorial="Sin especificar", float precio=0);
 
     Revista(const Revista& orig);
@@ -30,6 +30,10 @@ public:
 
 
     virtual std::string getID();
+
+    //Interfaz ItemCSV
+    virtual std::string toCSV();
+    virtual void fromCSV(std::string linea);
 
 
 private:

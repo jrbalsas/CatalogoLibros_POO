@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Ejemplar.h</itemPath>
+      <itemPath>ItemCSV.h</itemPath>
       <itemPath>Libro.h</itemPath>
       <itemPath>Revista.h</itemPath>
     </logicalFolder>
@@ -46,6 +47,8 @@
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ItemCSV.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Libro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Libro.h" ex="false" tool="3" flavor2="0">
@@ -80,6 +83,8 @@
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ItemCSV.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Libro.cpp" ex="false" tool="1" flavor2="0">
       </item>

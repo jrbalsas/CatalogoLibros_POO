@@ -18,7 +18,7 @@ private:
     unsigned int _anioPublicacion;
     
 public:
-    Libro(std::string isbn,std::string titulo, std::string editorial="No especificada", float precio=0);
+    Libro(std::string isbn="",std::string titulo="Sin titulo", std::string editorial="No especificada", float precio=0);
     Libro(const Libro& orig);
     virtual ~Libro();
     void setAnioPublicacion(unsigned int _anioPublicacion);
@@ -29,6 +29,12 @@ public:
     std::string getIsbn() const;
 
     virtual std::string getID();
+
+    //Métodos Interfaz ItemCSV
+    virtual std::string toCSV();
+    virtual void fromCSV(std::string linea);
+
+
 
 private:
 
