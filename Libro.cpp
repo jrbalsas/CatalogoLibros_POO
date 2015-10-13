@@ -15,7 +15,8 @@ Libro::Libro(std::string isbn,std::string titulo, std::string editorial, float p
     :Ejemplar(titulo,editorial,precio),_isbn(isbn){
 }
 
-Libro::Libro(const Libro& orig) {
+Libro::Libro(const Libro& orig): Ejemplar(orig),_isbn(orig._isbn),
+                                _anioPublicacion(orig._anioPublicacion),_edicion(orig._edicion) {
 }
 
 Libro::~Libro() {
@@ -84,4 +85,7 @@ void Libro::fromCSV(std::string linea) {
     
 }
 
+bool Libro::operator==(Comparable& e) {
+    return _isbn==dynamic_cast<Libro&>(e)._isbn;
+}
 

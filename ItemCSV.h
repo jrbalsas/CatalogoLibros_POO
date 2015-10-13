@@ -18,6 +18,8 @@ class ItemCSV {
 public:
     virtual std::string toCSV()=0;
     virtual void fromCSV(std::string linea)=0;
+    
+    virtual ~ItemCSV() {};
 private:
 
 };

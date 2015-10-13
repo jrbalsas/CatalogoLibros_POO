@@ -86,3 +86,8 @@ void Revista::fromCSV(std::string linea) {
     Ejemplar::fromCSV(lineaEjemplar);
     
 }
+
+bool Revista::operator==(Comparable& e) {
+    return _ISSN==dynamic_cast<Revista&>(e)._ISSN;
+
+}

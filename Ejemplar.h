@@ -10,9 +10,10 @@
 
 #include <string>
 #include "ItemCSV.h"
+#include "Comparable.h"
 
 /** Ejemplar de un catálogo de libros*/
-class Ejemplar: public ItemCSV {
+class Ejemplar: public ItemCSV, public Comparable {
 private:
     std::string _titulo;
     std::string _editorial;

@@ -35,6 +35,10 @@ public:
     virtual void fromCSV(std::string linea);
 
 
+    //Métodos Interfaz Comparable
+    virtual bool operator==(Comparable& e);
+
+
 
 private:
 
