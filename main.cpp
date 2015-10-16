@@ -19,7 +19,7 @@ const int NUMEJEMPLARES=2;
 */
 int main(int argc, char** argv) {
 
-    Comparable* ejemplares[NUMEJEMPLARES]= {
+    Ejemplar* ejemplares[NUMEJEMPLARES]= {
         new Libro("8448105907","Programación Orientada a Objetos","MacGraw-Hill",35),
         new Libro("8497320409","C++ Estandar","Paraninfo",28)
     };
@@ -43,7 +43,8 @@ int main(int argc, char** argv) {
     std::cout << fatima.toCSV() << std::endl;
     std::cout << bike.toCSV() << std::endl;
 
-    int posLibroCpp=BuscaElemento(ejemplares, NUMEJEMPLARES, dynamic_cast<Comparable*>(&poo));
+    int posLibroCpp=BuscaElemento(ejemplares, NUMEJEMPLARES
+                                  ,dynamic_cast<Ejemplar*>(&poo));
     
     if (posLibroCpp>=0) {
         std::cout << "Libro localizado: "
@@ -51,7 +52,8 @@ int main(int argc, char** argv) {
                   << std::endl;
     }
     
-    int posLibroFatima=BuscaElemento(ejemplares, NUMEJEMPLARES, dynamic_cast<Comparable*>(&fatima));
+    int posLibroFatima=BuscaElemento(ejemplares, NUMEJEMPLARES
+                                    ,dynamic_cast<Ejemplar*>(&fatima));
     if (posLibroFatima==-1) {
         std::cout << "El libro con ISBN " << fatima.getIsbn()
                   << " no se encuentra en el catálogo"

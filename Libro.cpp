@@ -89,3 +89,5 @@ bool Libro::operator==(Comparable& e) {
     return _isbn==dynamic_cast<Libro&>(e)._isbn;
 }
 
+
+

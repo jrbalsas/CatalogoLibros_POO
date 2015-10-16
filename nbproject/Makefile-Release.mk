@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Ejemplar.o \
 	${OBJECTDIR}/Libro.o \
 	${OBJECTDIR}/Revista.o \
-	${OBJECTDIR}/busqueda.o \
 	${OBJECTDIR}/main.o
 
 
@@ -80,11 +79,6 @@ ${OBJECTDIR}/Revista.o: Revista.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Revista.o Revista.cpp
-
-${OBJECTDIR}/busqueda.o: busqueda.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/busqueda.o busqueda.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

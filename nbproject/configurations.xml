@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Comparable.h</itemPath>
       <itemPath>Ejemplar.h</itemPath>
+      <itemPath>ExNoEncontrado.h</itemPath>
       <itemPath>ItemCSV.h</itemPath>
       <itemPath>Libro.h</itemPath>
       <itemPath>Revista.h</itemPath>
@@ -21,7 +22,6 @@
       <itemPath>Ejemplar.cpp</itemPath>
       <itemPath>Libro.cpp</itemPath>
       <itemPath>Revista.cpp</itemPath>
-      <itemPath>busqueda.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -52,6 +52,8 @@
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ExNoEncontrado.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ItemCSV.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Libro.cpp" ex="false" tool="1" flavor2="0">
@@ -61,8 +63,6 @@
       <item path="Revista.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Revista.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="busqueda.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="busqueda.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -95,6 +95,8 @@
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ExNoEncontrado.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ItemCSV.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Libro.cpp" ex="false" tool="1" flavor2="0">
@@ -104,8 +106,6 @@
       <item path="Revista.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Revista.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="busqueda.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="busqueda.h" ex="false" tool="3" flavor2="0">
       </item>
