@@ -11,9 +11,11 @@
 #include <string>
 #include "ItemCSV.h"
 #include "Comparable.h"
+#include "Duplicable.h"
+#include "Identificable.h"
 
 /** Ejemplar de un catálogo de libros*/
-class Ejemplar: public ItemCSV, public Comparable {
+class Ejemplar: public ItemCSV, public Comparable, public Duplicable , public Identificable<std::string> {
 private:
     std::string _titulo;
     std::string _editorial;
@@ -30,12 +32,16 @@ public:
     std::string getEditorial() const;
     void setTitulo(std::string titulo);
     std::string getTitulo() const;
-    
-    virtual std::string getID()=0;
-
+   
     //Interfaz ItemCSV
     virtual std::string toCSV();
     virtual void fromCSV(std::string linea);
+    
+
+    //Definición necesaria para evitar conflictos con operador de asignación por defecto
+    virtual bool operator==(Comparable& c) =0;
+    virtual bool operator==(std::string identificador)=0;
+
 
 
     

@@ -50,6 +50,11 @@ std::string Libro::getID() {
     return this->getIsbn();
 }
 
+bool Libro::operator==(std::string identificador) {
+    return this->getIsbn()==identificador;
+};
+
+
 std::string Libro::toCSV() {
 
     std::stringstream ss;
@@ -89,5 +94,12 @@ bool Libro::operator==(Comparable& e) {
     return _isbn==dynamic_cast<Libro&>(e)._isbn;
 }
 
+bool Libro::igualA(Comparable& e) {
+    return _isbn==dynamic_cast<Libro&>(e)._isbn;
+}
 
 
+
+Duplicable* Libro::copia() const{
+    return new Libro(*this);
+}

@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Catalogo.o \
 	${OBJECTDIR}/Ejemplar.o \
 	${OBJECTDIR}/Libro.o \
 	${OBJECTDIR}/Revista.o \
@@ -64,6 +65,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libreria: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libreria ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Catalogo.o: Catalogo.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Catalogo.o Catalogo.cpp
 
 ${OBJECTDIR}/Ejemplar.o: Ejemplar.cpp 
 	${MKDIR} -p ${OBJECTDIR}

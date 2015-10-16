@@ -1,4 +1,4 @@
-/** 
+/** Definición de la interfaz Comparable
  * @file   Comparable.h
  * @author jrbalsas
  *
@@ -8,11 +8,13 @@
 #ifndef COMPARABLE_H
 #define	COMPARABLE_H
 
-/**Interfaz para clases que admiten el operador de igualdad*/
+/**Interfaz para clases cuyos objetos son comparables
+ Dos objetos son comparables se puede saber si son iguales usando el operador ==
+ */
 class Comparable {
 public:
     virtual bool operator==(Comparable &e )=0;
-    //virtual bool igualA(Comparable &e)=0;
+    virtual bool igualA(Comparable &e) =0;
     virtual ~Comparable() {};
 private:
 

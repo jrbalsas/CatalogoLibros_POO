@@ -4,9 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Catalogo.h</itemPath>
       <itemPath>Comparable.h</itemPath>
+      <itemPath>Duplicable.h</itemPath>
       <itemPath>Ejemplar.h</itemPath>
       <itemPath>ExNoEncontrado.h</itemPath>
+      <itemPath>Identificable.h</itemPath>
       <itemPath>ItemCSV.h</itemPath>
       <itemPath>Libro.h</itemPath>
       <itemPath>Revista.h</itemPath>
@@ -19,6 +22,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Catalogo.cpp</itemPath>
       <itemPath>Ejemplar.cpp</itemPath>
       <itemPath>Libro.cpp</itemPath>
       <itemPath>Revista.cpp</itemPath>
@@ -46,13 +50,21 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Catalogo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Catalogo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Comparable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Duplicable.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ExNoEncontrado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Identificable.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ItemCSV.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -89,13 +101,21 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Catalogo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Catalogo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Comparable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Duplicable.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ExNoEncontrado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Identificable.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ItemCSV.h" ex="false" tool="3" flavor2="0">
       </item>

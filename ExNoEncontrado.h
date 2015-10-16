@@ -12,11 +12,11 @@
 #include <string>
 
 /**Excepción para indicar ausencia de elementos en búsquedas*/
-class NoEncontrado: public std::logic_error {
+class ExNoEncontrado: public std::logic_error {
 public:
-    NoEncontrado(std::string error="[NoEncontrado] Elemento no disponible"):std::logic_error(error) {};
-    NoEncontrado(const NoEncontrado& orig):logic_error(orig) {};
-    virtual ~NoEncontrado() {};
+    ExNoEncontrado(std::string error="[NoEncontrado] Elemento no disponible"):std::logic_error(error) {};
+    ExNoEncontrado(const ExNoEncontrado& orig):logic_error(orig) {};
+    virtual ~ExNoEncontrado() throw() {};
 private:
 
 };

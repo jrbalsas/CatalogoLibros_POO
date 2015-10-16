@@ -8,6 +8,7 @@
 #ifndef REVISTA_H
 #define	REVISTA_H
 #include "Ejemplar.h"
+#include "Identificable.h"
 
 class Revista: public Ejemplar {
 private:
@@ -29,7 +30,9 @@ public:
     std::string getISSN() const;
 
 
+    //Interfaz Identificable
     virtual std::string getID();
+    virtual bool operator==(std::string identificador);
 
     //Interfaz ItemCSV
     virtual std::string toCSV();
@@ -38,6 +41,11 @@ public:
 
     //Interfaz Comparable
     virtual bool operator==(Comparable& e);
+    virtual bool igualA(Comparable& e);
+
+
+    //Interfaz Duplicable
+    virtual Duplicable* copia() const;
 
 private:
 

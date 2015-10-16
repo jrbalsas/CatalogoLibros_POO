@@ -9,6 +9,7 @@
 #define	LIBRO_H
 
 #include "Ejemplar.h"
+#include "Identificable.h"
 
 
 class Libro: public Ejemplar {
@@ -28,17 +29,23 @@ public:
     void setIsbn(std::string _isbn);
     std::string getIsbn() const;
 
-    virtual std::string getID();
 
     //Métodos Interfaz ItemCSV
     virtual std::string toCSV();
     virtual void fromCSV(std::string linea);
 
-
     //Métodos Interfaz Comparable
     virtual bool operator==(Comparable& e);
+    virtual bool igualA(Comparable& e);
 
 
+    //Métodos de Interfaz Identificable
+    virtual std::string getID();
+    virtual bool operator==(std::string identificador);
+    
+    //Método Interfaz Duplicable
+    virtual Duplicable* copia() const;
+    
 
 private:
 

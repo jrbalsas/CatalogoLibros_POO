@@ -52,6 +52,10 @@ std::string Revista::getID() {
     return this->getISSN();
 }
 
+bool Revista::operator==(std::string identificador) {
+    return this->getISSN()==identificador;
+}
+
 std::string Revista::toCSV() {
     std::stringstream ss;
     std::string linea;
@@ -90,4 +94,13 @@ void Revista::fromCSV(std::string linea) {
 bool Revista::operator==(Comparable& e) {
     return _ISSN==dynamic_cast<Revista&>(e)._ISSN;
 
+}
+
+bool Revista::igualA(Comparable& e) {
+    return _ISSN==dynamic_cast<Revista&>(e)._ISSN;
+}
+
+
+Duplicable* Revista::copia() const{
+    return new Revista(*this);
 }
