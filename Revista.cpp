@@ -92,12 +92,11 @@ void Revista::fromCSV(std::string linea) {
 }
 
 bool Revista::operator==(Comparable& e) {
-    return _ISSN==dynamic_cast<Revista&>(e)._ISSN;
-
+    return _ISSN==dynamic_cast<Ejemplar&>(e).getID();
 }
 
 bool Revista::igualA(Comparable& e) {
-    return _ISSN==dynamic_cast<Revista&>(e)._ISSN;
+    return _ISSN==dynamic_cast<Ejemplar&>(e).getID();
 }
 
 

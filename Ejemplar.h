@@ -1,4 +1,4 @@
-/**
+/** Definición clase abstracta para representar cualquier ejemplar de un catálogo
  * @file   Ejemplar.h
  * @author jrbalsas@ujaen.es
  *
@@ -14,7 +14,7 @@
 #include "Duplicable.h"
 #include "Identificable.h"
 
-/** Ejemplar de un catálogo de libros*/
+/** Clase abstracta para cualquier ejemplar de un catálogo de libros*/
 class Ejemplar: public ItemCSV, public Comparable, public Duplicable , public Identificable<std::string> {
 private:
     std::string _titulo;
@@ -41,9 +41,6 @@ public:
     //Definición necesaria para evitar conflictos con operador de asignación por defecto
     virtual bool operator==(Comparable& c) =0;
     virtual bool operator==(std::string identificador)=0;
-
-
-
     
 private:
     

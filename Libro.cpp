@@ -99,11 +99,11 @@ void Libro::fromCSV(std::string linea) {
 }
 
 bool Libro::operator==(Comparable& e) {
-    return _isbn==dynamic_cast<Libro&>(e)._isbn;
+    return _isbn==dynamic_cast<Ejemplar&>(e).getID();
 }
 
 bool Libro::igualA(Comparable& e) {
-    return _isbn==dynamic_cast<Libro&>(e)._isbn;
+    return _isbn==dynamic_cast<Ejemplar&>(e).getID();
 }
 
 
