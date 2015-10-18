@@ -49,7 +49,7 @@ void utilEjemplar::visualiza(Revista &revista) {
     std::cout << "Editorial: " << revista.getEditorial() << std::endl;
     std::cout << "Año de publicación: " << revista.getAnio();
     std::cout << " Num: " << revista.getNumero() << std::endl;
-    std::cout << "ISSN: " << revista.getAnio() << std::endl;
+    std::cout << "ISSN: " << revista.getISSN() << std::endl;
     std::cout << "Precio: "<< revista.getPrecio() << " euros" << std::endl;
 }
 

@@ -20,7 +20,7 @@ private:
     unsigned int _anioPublicacion;
     
 public:
-    Libro(std::string isbn="",std::string titulo="Sin titulo", std::string autor="Desconocido", std::string editorial="No especificada", float precio=0);
+    Libro(std::string isbn="",std::string titulo="Sin titulo", unsigned int anio=0, std::string autor="Desconocido", std::string editorial="No especificada", float precio=0);
     Libro(const Libro& orig);
     virtual ~Libro();
     void setAnioPublicacion(unsigned int _anioPublicacion);

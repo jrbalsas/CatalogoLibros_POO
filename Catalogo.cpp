@@ -127,12 +127,12 @@ void Catalogo::guardaEnFichero(std::string nombreFichero) {
         for ( int i=0; i<numEjemplares; i++ ) {
             //Añadimos el tipo de cada ejemplar en la primera columna de cada línea del fichero CSV
             if (dynamic_cast<Libro*>(ejemplares[i])!=0) {
-                linea="libro;";
+                linea="Libro;";
             } else if (dynamic_cast<Revista*>(ejemplares[i])!=0) {
-                linea="revista;";
+                linea="Revista;";
             } else {
                 //Ejemplar de tipo desconocido
-                linea="desconocido;";
+                linea="Desconocido;";
             }
             linea=linea+ejemplares[i]->toCSV();
             f <<  linea << std::endl;
@@ -157,7 +157,9 @@ void Catalogo::recuperaDeFichero(std::string nombreFichero) {
     if ( f.good() ) {
         while( !f.eof() ) {
             std::getline( f, tipo, ';' );
-            if (tipo=="Libro") {
+            if (tipo=="") {
+                continue; //ignoramos líneas vacías
+            }else if (tipo=="Libro") {
                 ejemplares[numEjemplares]=new Libro();
             }else if (tipo=="Revista") {
                 ejemplares[numEjemplares]=new Revista();

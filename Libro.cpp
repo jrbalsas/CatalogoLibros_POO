@@ -11,8 +11,8 @@
 #include <iostream>
 
 
-Libro::Libro(std::string isbn,std::string titulo, std::string autor, std::string editorial, float precio)
-    :Ejemplar(titulo,editorial,precio),_isbn(isbn), _autor(autor){
+Libro::Libro(std::string isbn,std::string titulo, unsigned int anio, std::string autor, std::string editorial, float precio)
+    :Ejemplar(titulo,editorial,precio),_isbn(isbn), _autor(autor),_anioPublicacion(anio),_edicion(0){
 }
 
 Libro::Libro(const Libro& orig): Ejemplar(orig),_isbn(orig._isbn),
