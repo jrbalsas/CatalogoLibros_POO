@@ -22,11 +22,11 @@ void utilEjemplar::visualiza(Ejemplar& ejemplar) {
         std::cout << "Nombre: " << ejemplar.getTitulo() << std::endl;
         std::cout << "Precio: "<< ejemplar.getPrecio() << " euros" << std::endl;     
     }
-    
 }
 
+/**Visualiza un ejemplar de forma adecuada según su tipo a partir de un puntero*/
 void utilEjemplar::visualiza(Ejemplar* ejemplar) {
-        visualiza( dynamic_cast<Ejemplar&>( *ejemplar ) );
+        visualiza(  *ejemplar  );
 }
 
 /**Visualiza un Libro en la salida estándar*/
