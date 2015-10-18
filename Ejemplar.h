@@ -37,10 +37,6 @@ public:
     virtual std::string toCSV();
     virtual void fromCSV(std::string linea);
     
-
-    //Definición necesaria para evitar conflictos con operador de asignación por defecto
-    virtual bool operator==(Comparable& c) =0;
-    virtual bool operator==(std::string identificador)=0;
     
 private:
     
