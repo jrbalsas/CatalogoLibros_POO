@@ -6,30 +6,45 @@
  */
 
 #include <iostream>
+#include <exception>
 
 #include "Libro.h"
 #include "Revista.h"
 #include "busqueda.h"
 
 #include "util_ejemplar.h"
+#include "Catalogo.h"
+#include "ExNoEncontrado.h"
 
 using namespace std;
 
 const int NUMEJEMPLARES=4;
+const std::string ficheroEjemplares="ejemplares.csv";
+
+/**Inicializamos un catálogo con algunos ejemplares de prueba*/
+void inicializaCatalogo(Catalogo &catalogo) {
+    
+        catalogo.nuevoEjemplar( Libro("8448105907","Programación Orientada a Objetos",2011,"Joyanes, L.","MacGraw-Hill",35));
+        catalogo.nuevoEjemplar( Libro("8497320409","C++ Estandar",2001,"Hernandez, E.","Paraninfo",28) );
+        catalogo.nuevoEjemplar( Revista("123456789","Bike",2015,10,"Motorpress",3.50) );
+        catalogo.nuevoEjemplar( Revista("987654321","Muy Interesante",2016,5,"G+J",3) );
+        catalogo.nuevoEjemplar( Libro("8499893740","La mano de Fatima",2012,"Falcon, I.","De bolsillo",9.46) ) ;
+}
+
 
 /** Programa de ejemplo para probar el catálogo
 */
 int main(int argc, char** argv) {
 
     Ejemplar* ejemplares[NUMEJEMPLARES]= {
-        new Libro("8448105907","Programación Orientada a Objetos","Joyanes, L.","MacGraw-Hill",35),
-        new Libro("8497320409","C++ Estandar","Hernandez, E.","Paraninfo",28),
+        new Libro("8448105907","Programación Orientada a Objetos", 2011, "Joyanes, L.","MacGraw-Hill",35),
+        new Libro("8497320409","C++ Estandar",2001, "Hernandez, E.","Paraninfo",28),
         new Revista("123456789","Bike",2015,10,"Motorpress",3.50),
         new Revista("987654321","Muy Interesante",2016,5,"G+J",3)
     };
     
-    Libro quijote("123456789","El ingenioso hidalgo, Don Quijote de la Mancha","Cervantes, M.","Edelvives",9.5);
-    Libro poo("8448105907","Programación Orientada a Objetos","Joyanes, L.", "MacGraw-Hill",35);
+    Libro quijote("123456789","El ingenioso hidalgo, Don Quijote de la Mancha",1605 ,"Cervantes, M.","Edelvives",9.5);
+    Libro poo("8448105907","Programación Orientada a Objetos",2011, "Joyanes, L.", "MacGraw-Hill",35);
     Libro fatima;
 
     Revista muy("987654321","Muy Interesante",2016,5,"G+J",3);
@@ -74,6 +89,73 @@ int main(int argc, char** argv) {
         delete ejemplares[i];
     }
 
+    //Pruebas de la clase catálogo
+    Catalogo catalogo;
+    
+    inicializaCatalogo(catalogo);
+
+    try {
+        utilEjemplar::visualiza( catalogo.ejemplarAlAzar() );    
+        utilEjemplar::visualiza( catalogo.buscaEjemplar("8497320409") );        
+    } catch (std::exception &e) {
+        std::cerr << "Error en programa principal: "
+                  << e.what();
+    }
+
+    std::string idBusqueda="2222222222"; //ejemplar no existente
+    
+    try {
+        utilEjemplar::visualiza( catalogo.buscaEjemplar(idBusqueda) );        
+    } catch (std::exception &e) {
+        std::cerr << "El ejemplar  "+idBusqueda
+                  << " no se encuentra disponible" << std::endl;
+    };
+    
+    std::cout << std::endl << "Volcando catálogo en fichero " << ficheroEjemplares << std::endl;
+    catalogo.guardaEnFichero(ficheroEjemplares);
+    
+    std::cout << std::endl << "Vaciámos catálogo original " << std::endl;
+    catalogo.vaciar();
+
+    std::cout << std::endl << "Cargamos catálogo desde fichero " << ficheroEjemplares << std::endl;
+    //TODO capturar excepciones de acceso a disco
+    catalogo.recuperaDeFichero(ficheroEjemplares);
+    std::cout << "Recuperados " << catalogo.getNumEjemplares() 
+              << " Ejemplares del fichero " << ficheroEjemplares << std::endl;
+
+    try {
+        idBusqueda="8497320409"; //Debería estar en el catálogo original almacenado
+        utilEjemplar::visualiza( catalogo.buscaEjemplar(idBusqueda) );        
+    } catch (std::exception &e) {
+        std::cerr << "El ejemplar  "+idBusqueda
+                  << " no se encuentra disponible" << std::endl;
+    }
+
+
+    std::cout << "Duplicamos el catálogo original" << std::endl;
+    Catalogo catalogoCopia(catalogo);
+    
+    try {
+        idBusqueda="123456789"; //Revista bike
+        catalogoCopia.borraEjemplar(idBusqueda); 
+        std::cout << std::endl << "Probamos a borrar un ejemplar no existente " << std::endl;
+        catalogoCopia.borraEjemplar(idBusqueda); //No existente!
+    } catch (ExNoEncontrado &e) {
+        std::cerr << "El ejemplar  "+idBusqueda
+                  << " no se encuentra disponible en la copia del catálogo" << std::endl;
+    } 
+
+    try {
+        idBusqueda="123456789"; //Revista bike
+        //La revista sí debe estar en el catálogo original
+        utilEjemplar::visualiza( catalogo.buscaEjemplar(idBusqueda) );        
+    } catch (ExNoEncontrado &e) {
+        std::cerr << "El ejemplar  "+idBusqueda
+                  << " no se encuentra disponible" << std::endl;
+    } 
+    
+    
+    
     
     return 0;
 }
