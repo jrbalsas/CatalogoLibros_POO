@@ -15,11 +15,12 @@
 class Libro: public Ejemplar {
 private:
     std::string _isbn;
+    std::string _autor;
     unsigned int _edicion;
     unsigned int _anioPublicacion;
     
 public:
-    Libro(std::string isbn="",std::string titulo="Sin titulo", std::string editorial="No especificada", float precio=0);
+    Libro(std::string isbn="",std::string titulo="Sin titulo", std::string autor="Desconocido", std::string editorial="No especificada", float precio=0);
     Libro(const Libro& orig);
     virtual ~Libro();
     void setAnioPublicacion(unsigned int _anioPublicacion);
@@ -45,6 +46,8 @@ public:
     
     //Método Interfaz Duplicable
     virtual Duplicable* copia() const;
+    void setAutor(std::string _autor);
+    std::string getAutor() const;
     
 
 private:

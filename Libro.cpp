@@ -11,8 +11,8 @@
 #include <iostream>
 
 
-Libro::Libro(std::string isbn,std::string titulo, std::string editorial, float precio)
-    :Ejemplar(titulo,editorial,precio),_isbn(isbn){
+Libro::Libro(std::string isbn,std::string titulo, std::string autor, std::string editorial, float precio)
+    :Ejemplar(titulo,editorial,precio),_isbn(isbn), _autor(autor){
 }
 
 Libro::Libro(const Libro& orig): Ejemplar(orig),_isbn(orig._isbn),
@@ -20,6 +20,14 @@ Libro::Libro(const Libro& orig): Ejemplar(orig),_isbn(orig._isbn),
 }
 
 Libro::~Libro() {
+}
+
+void Libro::setAutor(std::string _autor) {
+    this->_autor = _autor;
+}
+
+std::string Libro::getAutor() const {
+    return _autor;
 }
 
 void Libro::setAnioPublicacion(unsigned int _anioPublicacion) {
@@ -103,3 +111,4 @@ bool Libro::igualA(Comparable& e) {
 Duplicable* Libro::copia() const{
     return new Libro(*this);
 }
+

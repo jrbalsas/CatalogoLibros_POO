@@ -20,12 +20,12 @@ const int NUMEJEMPLARES=2;
 int main(int argc, char** argv) {
 
     Ejemplar* ejemplares[NUMEJEMPLARES]= {
-        new Libro("8448105907","Programación Orientada a Objetos","MacGraw-Hill",35),
-        new Libro("8497320409","C++ Estandar","Paraninfo",28)
+        new Libro("8448105907","Programación Orientada a Objetos","Joyanes, L.","MacGraw-Hill",35),
+        new Libro("8497320409","C++ Estandar","Hernandez, E.","Paraninfo",28)
     };
     
-    Libro quijote("123456789","El ingenioso hidalgo, Don Quijote de la Mancha","Edelvives",9.5);
-    Libro poo("8448105907","Programación Orientada a Objetos","MacGraw-Hill",35);
+    Libro quijote("123456789","El ingenioso hidalgo, Don Quijote de la Mancha","Cervantes, M.","Edelvives",9.5);
+    Libro poo("8448105907","Programación Orientada a Objetos","Joyanes, L.", "MacGraw-Hill",35);
     Libro fatima;
 
     Revista muy("987654321","Muy Interesante",2016,5,"G+J",3);
@@ -69,3 +69,40 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+/**Visualiza un ejemplar de forma adecuada según su tipo*/
+void visualizaEjemplar(Ejemplar &ejemplar) {
+    //Usamos RTTI para determinar cómo se visualiza cada tipo de ejemplar
+    if (dynamic_cast<Libro*>(&ejemplar)!=0) 
+        visualizaEjemplar(dynamic_cast<Libro&>(ejemplar));
+    else if (dynamic_cast<Revista*>(&ejemplar)!=0) 
+        visualizaEjemplar(dynamic_cast<Revista&>(ejemplar));
+    else {
+        std::cout << "Ejemplar es de tipo desconocido:" << std::endl;
+        std::cout << "==============================" << std::endl;
+        std::cout << "ID: "<< ejemplar.getID() << std::endl;
+        std::cout << "Nombre: " << ejemplar.getTitulo() << std::endl;
+        std::cout << "Precio: "<< ejemplar.getPrecio() << " euros" << std::endl;     
+    }
+    
+}
+/**Visualiza un Libro en la salida estándar*/
+void visualizaEjemplar(Libro &libro) {
+    std::cout << "LIBRO: " << libro.getTitulo() << std::endl;
+    std::cout << "==============================" << std::endl;
+    std::cout << "Autor: " << libro.getAutor() << std::endl;
+    std::cout << "Año de publicación:" << libro.getAnioPublicacion() << std::endl;
+    std::cout << "Edición: " << libro.getEdicion() << std::endl;
+    std::cout << "Editorial: " << libro.getEditorial() << std::endl;
+    std::cout << "ISBN: " << libro.getIsbn() << std::endl;
+    std::cout << "Precio: "<< libro.getPrecio() << " euros" << std::endl;     
+}
+/**Visualiza una Revista en la salida estándar*/
+void visualizaEjemplar(Revista &revista) {
+    std::cout << "REVISTA: " << revista.getTitulo() << std::endl;
+    std::cout << "==============================" << std::endl;
+    std::cout << "Editorial: " << revista.getEditorial() << std::endl;
+    std::cout << "Año de publicación: " << revista.getAnio();
+    std::cout << " Num: " << revista.getNumero() << std::endl;
+    std::cout << "ISSN: " << revista.getAnio() << std::endl;
+    std::cout << "Precio: "<< revista.getPrecio() << " euros" << std::endl;
+}

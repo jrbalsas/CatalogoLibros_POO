@@ -14,6 +14,9 @@
  sea de utilidad.*/
 class Duplicable {
 public:
+    /**Devuelve una copia en memoria dinámica del objeto
+      @post La copia generada debe ser liberada por quién la solicita
+    */
     virtual Duplicable* copia(void) const = 0;
     virtual ~Duplicable() {};
 private:

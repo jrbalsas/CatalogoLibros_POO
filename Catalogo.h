@@ -31,11 +31,13 @@ public:
     
     void borraEjemplar(std::string idEjemplar);
     Ejemplar& buscaEjemplar(std::string idEjemplar);
+    Ejemplar& ejemplarAlAzar();
     void guardaEnFichero(std::string nombreFichero);
     void recuperaDeFichero(std::string nombreFichero );
+    int getNumEjemplares() const;
+    void vaciar();
     
 private:
-
 };
 
 #endif	/* CATALOGO_H */

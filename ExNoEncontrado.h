@@ -1,5 +1,5 @@
 /** Definición de excepción lógica
- * @file   NoEncontrado.h
+ * @file   ExNoEncontrado.h
  * @author jrbalsas
  *
  * @date 16 de octubre de 2015, 9:33
