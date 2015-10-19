@@ -121,7 +121,7 @@ void Catalogo::guardaEnFichero(std::string nombreFichero) {
     std::ofstream f;
     std::string linea;
     
-    f.open(nombreFichero);
+    f.open(nombreFichero.c_str());
     
     if (f.good()) {
         for ( int i=0; i<numEjemplares; i++ ) {

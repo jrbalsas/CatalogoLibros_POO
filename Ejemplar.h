@@ -37,6 +37,11 @@ public:
     virtual std::string toCSV();
     virtual void fromCSV(std::string linea);
     
+
+    //Redeclaración de métodos virtuales puros de interfaces
+    //Necesario en versión gcc 4.9.2
+    virtual bool operator==(Comparable& c) =0;
+    virtual bool operator==(std::string identificador)=0;
     
 private:
     
