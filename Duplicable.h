@@ -9,8 +9,8 @@
 #define	DUPLICABLE_H
 
 /** Interfaz para clases que permiten a sus objetos obtener copias de ellos mismos.
- El método copia debe devolver una copia en memoria dinámica del objeto que recibe el método.
- El usuario del método es responsable de liberar la memoria del objeto duplicado cuando ya no
+ La implementación de copia debe devolver una copia en memoria dinámica del objeto llamado.
+ El llamador es responsable de liberar la memoria del objeto duplicado cuando ya no
  sea de utilidad.*/
 class Duplicable {
 public:

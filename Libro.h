@@ -44,7 +44,7 @@ public:
     virtual std::string getID();
     virtual bool operator==(std::string identificador);
     
-    //Método Interfaz Duplicable
+    //Métodos Interfaz Duplicable
     virtual Duplicable* copia() const;
     void setAutor(std::string _autor);
     std::string getAutor() const;

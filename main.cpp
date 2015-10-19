@@ -111,26 +111,31 @@ int main(int argc, char** argv) {
                   << " no se encuentra disponible" << std::endl;
     };
     
-    std::cout << std::endl << "Volcando catálogo en fichero " << ficheroEjemplares << std::endl;
-    catalogo.guardaEnFichero(ficheroEjemplares);
-    
-    std::cout << std::endl << "Vaciámos catálogo original " << std::endl;
-    catalogo.vaciar();
-
-    std::cout << std::endl << "Cargamos catálogo desde fichero " << ficheroEjemplares << std::endl;
-    //TODO capturar excepciones de acceso a disco
-    catalogo.recuperaDeFichero(ficheroEjemplares);
-    std::cout << "Recuperados " << catalogo.getNumEjemplares() 
-              << " Ejemplares del fichero " << ficheroEjemplares << std::endl;
 
     try {
-        idBusqueda="8497320409"; //Debería estar en el catálogo original almacenado
-        utilEjemplar::visualiza( catalogo.buscaEjemplar(idBusqueda) );        
-    } catch (std::exception &e) {
-        std::cerr << "El ejemplar  "+idBusqueda
-                  << " no se encuentra disponible" << std::endl;
-    }
+        std::cout << std::endl << "Volcando catálogo en fichero " << ficheroEjemplares << std::endl;
+        catalogo.guardaEnFichero(ficheroEjemplares);
 
+        std::cout << std::endl << "Vaciámos catálogo original " << std::endl;
+        catalogo.vaciar();
+
+        std::cout << std::endl << "Cargamos catálogo desde fichero " << ficheroEjemplares << std::endl;
+
+        catalogo.recuperaDeFichero(ficheroEjemplares);
+        std::cout << "Recuperados " << catalogo.getNumEjemplares() 
+                  << " Ejemplares del fichero " << ficheroEjemplares << std::endl;
+
+        try {
+            idBusqueda="8497320409"; //Debería estar en el catálogo original almacenado
+            utilEjemplar::visualiza( catalogo.buscaEjemplar(idBusqueda) );        
+        } catch (ExNoEncontrado &e) {
+            std::cerr << "El ejemplar  "+idBusqueda
+                      << " no se encuentra disponible" << std::endl;
+        }
+    } catch (std::exception &e){
+        std::cerr << "[main] Error al recuperar catálogo de disco. " << e.what();
+        throw e; //Error irrecuperable. Terminamos la aplicación
+    }
 
     std::cout << "Duplicamos el catálogo original" << std::endl;
     Catalogo catalogoCopia(catalogo);
@@ -153,9 +158,6 @@ int main(int argc, char** argv) {
         std::cerr << "El ejemplar  "+idBusqueda
                   << " no se encuentra disponible" << std::endl;
     } 
-    
-    
-    
     
     return 0;
 }

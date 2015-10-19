@@ -138,6 +138,8 @@ void Catalogo::guardaEnFichero(std::string nombreFichero) {
             f <<  linea << std::endl;
         };
         f.close();        
+    } else {
+        throw std::runtime_error("[Catalogo::guardaEnFichero] No puede abrirse el fichero "+nombreFichero);
     }
 }
 
@@ -172,6 +174,8 @@ void Catalogo::recuperaDeFichero(std::string nombreFichero) {
             numEjemplares++;            
             }
             f.close();
+    } else {
+        throw std::runtime_error("[Catalogo::recuperaDeFichero] No puede abrirse el fichero "+nombreFichero);
     }
 
 }
