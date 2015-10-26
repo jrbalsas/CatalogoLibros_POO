@@ -36,9 +36,7 @@ Catalogo::Catalogo(const Catalogo& orig):numEjemplares(orig.numEjemplares) {
         //el nuevo catálogo
         ejemplares[i]=dynamic_cast<Ejemplar*>( orig.ejemplares[i]->copia() );
 
-    }
-
-            
+    }            
 }
 /**Destructor*/
 Catalogo::~Catalogo() {
