@@ -13,8 +13,8 @@
  */
 class Comparable {
 public:
-    virtual bool operator==(Comparable &e )=0;
-    virtual bool igualA(Comparable &e) =0;
+    virtual bool operator==(const Comparable &e ) const =0;
+    virtual bool igualA(const Comparable &e) const =0;
     virtual ~Comparable() {};
 private:
 

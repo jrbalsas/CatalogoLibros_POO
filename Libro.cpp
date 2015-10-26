@@ -54,11 +54,11 @@ std::string Libro::getIsbn() const {
     return _isbn;
 }
 
-std::string Libro::getID() {
+std::string Libro::getID() const {
     return this->getIsbn();
 }
 
-bool Libro::operator==(std::string identificador) {
+bool Libro::operator==(std::string identificador) const {
     return this->getIsbn()==identificador;
 };
 
@@ -98,12 +98,12 @@ void Libro::fromCSV(std::string linea) {
     
 }
 
-bool Libro::operator==(Comparable& e) {
-    return _isbn==dynamic_cast<Ejemplar&>(e).getID();
+bool Libro::operator==(const Comparable& e) const {
+    return _isbn==dynamic_cast<const Ejemplar&>(e).getID();
 }
 
-bool Libro::igualA(Comparable& e) {
-    return _isbn==dynamic_cast<Ejemplar&>(e).getID();
+bool Libro::igualA(const Comparable& e) const{
+    return _isbn==dynamic_cast<const Ejemplar&>(e).getID();
 }
 
 

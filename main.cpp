@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
     std::cout << bike.toCSV() << std::endl;
 
     int posLibroCpp=BuscaElemento(ejemplares, NUMEJEMPLARES
-                                  ,dynamic_cast<Ejemplar*>(&poo));
+                                  ,dynamic_cast<Ejemplar&>(poo));
     
     if (posLibroCpp>=0) {
         std::cout << "Libro localizado: "
@@ -72,7 +72,7 @@ int main(int argc, char** argv) {
     }
     
     int posLibroFatima=BuscaElemento(ejemplares, NUMEJEMPLARES
-                                    ,dynamic_cast<Ejemplar*>(&fatima));
+                                    ,dynamic_cast<Ejemplar&>(fatima));
     if (posLibroFatima==-1) {
         std::cout << "El libro con ISBN " << fatima.getIsbn()
                   << " no se encuentra en el catálogo"

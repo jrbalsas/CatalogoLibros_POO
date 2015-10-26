@@ -31,8 +31,8 @@ public:
 
 
     //Interfaz Identificable
-    virtual std::string getID();
-    virtual bool operator==(std::string identificador);
+    virtual std::string getID() const;
+    virtual bool operator==(std::string identificador) const;
 
     //Interfaz ItemCSV
     virtual std::string toCSV();
@@ -40,8 +40,8 @@ public:
 
 
     //Interfaz Comparable
-    virtual bool operator==(Comparable& e);
-    virtual bool igualA(Comparable& e);
+    virtual bool operator==(const Comparable& e) const;
+    virtual bool igualA(const Comparable& e) const;
 
 
     //Interfaz Duplicable

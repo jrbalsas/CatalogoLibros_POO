@@ -48,11 +48,11 @@ std::string Revista::getISSN() const {
     return _ISSN;
 }
 
-std::string Revista::getID() {
+std::string Revista::getID() const {
     return this->getISSN();
 }
 
-bool Revista::operator==(std::string identificador) {
+bool Revista::operator==(std::string identificador) const {
     return this->getISSN()==identificador;
 }
 
@@ -91,12 +91,12 @@ void Revista::fromCSV(std::string linea) {
     
 }
 
-bool Revista::operator==(Comparable& e) {
-    return _ISSN==dynamic_cast<Ejemplar&>(e).getID();
+bool Revista::operator==(const Comparable& c) const {
+    return _ISSN==dynamic_cast<const Ejemplar&>(c).getID();
 }
 
-bool Revista::igualA(Comparable& e) {
-    return _ISSN==dynamic_cast<Ejemplar&>(e).getID();
+bool Revista::igualA(const Comparable& c) const {
+    return _ISSN==dynamic_cast<const Ejemplar&>(c).getID();
 }
 
 

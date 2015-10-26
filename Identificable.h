@@ -15,8 +15,8 @@
 template <typename T>
 class Identificable {
 public:
-    virtual T getID() = 0;
-    virtual bool operator==(std::string identificador)=0;
+    virtual T getID() const = 0;
+    virtual bool operator==(std::string identificador) const =0;
     virtual ~Identificable() {};
 private:
 

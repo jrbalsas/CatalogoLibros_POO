@@ -91,7 +91,7 @@ Ejemplar& Catalogo::buscaEjemplar(std::string idEjemplar) {
    return *ejemplares[posEncontrado];
 }
 
-/**Borra un ejemplar del catálogo a partir de su identificador
+/**Borra el primer ejemplar del catálogo a partir de su identificador
  @throw NoEncontrado si el ejemplar en cuestión no está en el catálogo
 */
 void Catalogo::borraEjemplar(std::string idEjemplar) {

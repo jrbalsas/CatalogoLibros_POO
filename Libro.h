@@ -36,13 +36,13 @@ public:
     virtual void fromCSV(std::string linea);
 
     //Métodos Interfaz Comparable
-    virtual bool operator==(Comparable& e);
-    virtual bool igualA(Comparable& e);
+    virtual bool operator==(const Comparable& e) const;
+    virtual bool igualA(const Comparable& e) const;
 
 
     //Métodos de Interfaz Identificable
-    virtual std::string getID();
-    virtual bool operator==(std::string identificador);
+    virtual std::string getID() const;
+    virtual bool operator==(std::string identificador) const;
     
     //Métodos Interfaz Duplicable
     virtual Duplicable* copia() const;
