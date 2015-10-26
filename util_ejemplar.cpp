@@ -10,6 +10,7 @@
 /**Visualiza un ejemplar de forma adecuada según su tipo*/
 void utilEjemplar::visualiza(Ejemplar& ejemplar) {
     //Usamos RTTI para determinar cómo se visualiza cada tipo de ejemplar
+    //Se utiliza conversión a puntero para evitar capturar excepciones de conversión)
     if (dynamic_cast<Libro*>( &ejemplar )!=0) 
         visualiza(dynamic_cast<Libro&>( ejemplar ));
     else if (dynamic_cast<Revista*>( &ejemplar )!=0) 
