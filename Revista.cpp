@@ -11,16 +11,19 @@
 #include "Ejemplar.h"
 
 
+/**Construye una revista a partir de su información básica*/
 Revista::Revista(   std::string ISSN, std::string titulo, unsigned int anio, unsigned int numero,
                     std::string editorial, float precio)
     : Ejemplar(titulo, editorial, precio), _ISSN(ISSN), _anio(anio), _numero(numero) {
 }
 
+/**Constructor de copia*/
 Revista::Revista(const Revista& orig)
     :Ejemplar(orig),_ISSN(orig._ISSN),_anio(orig._anio),_numero(orig._numero){
 
 }
 
+/**Destructor*/
 Revista::~Revista() {
 }
 
@@ -48,14 +51,17 @@ std::string Revista::getISSN() const {
     return _ISSN;
 }
 
+/**Obtiene el identificador único de una Revista que es igual a su ISSN*/
 std::string Revista::getID() const {
     return this->getISSN();
 }
 
+/**Compara el identificador con el ISSN de una revista*/
 bool Revista::operator==(std::string identificador) const {
     return this->getISSN()==identificador;
 }
 
+/**Devuelve una cadena con la representación CSV de los datos de una revista*/
 std::string Revista::toCSV() {
     std::stringstream ss;
     std::string linea;
@@ -73,6 +79,8 @@ std::string Revista::toCSV() {
     return linea;
 }
 
+/**Inicializa una Revista a partir de sus datos obtenidos en formato CSV almacenados en línea
+ @pre formato de línea: issn;año_publicacion;num_publicacion;título;editorial;precio*/
 void Revista::fromCSV(std::string linea) {
 
     std::stringstream ss(linea);
@@ -91,15 +99,17 @@ void Revista::fromCSV(std::string linea) {
     
 }
 
+/**Compara si otro ejemplar tiene el mismo ISSN*/
 bool Revista::operator==(const Comparable& c) const {
-    return _ISSN==dynamic_cast<const Ejemplar&>(c).getID();
+    return igualA(c);
 }
-
+/**Compara si otro ejemplar tiene el mismo ISSN*/
 bool Revista::igualA(const Comparable& c) const {
     return _ISSN==dynamic_cast<const Ejemplar&>(c).getID();
 }
 
-
+/**Devuelve una copia en memoria dinámica del objeto
+ @post la copia devuelva debe ser liberada por el llamador*/
 Duplicable* Revista::copia() const{
     return new Revista(*this);
 }

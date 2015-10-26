@@ -11,14 +11,18 @@
 #include <iostream>
 
 
+
+/**Constructor de un libro a partir de su información básica*/
 Libro::Libro(std::string isbn,std::string titulo, unsigned int anio, std::string autor, std::string editorial, float precio)
     :Ejemplar(titulo,editorial,precio),_isbn(isbn), _autor(autor),_anioPublicacion(anio),_edicion(0){
 }
 
+/**Constructor de copia*/
 Libro::Libro(const Libro& orig): Ejemplar(orig),_isbn(orig._isbn),
                                 _anioPublicacion(orig._anioPublicacion),_edicion(orig._edicion) {
 }
 
+/**Destructor*/
 Libro::~Libro() {
 }
 
@@ -54,15 +58,17 @@ std::string Libro::getIsbn() const {
     return _isbn;
 }
 
+/**Obtiene el identificador único de un Libro que es igual a su ISBN*/
 std::string Libro::getID() const {
     return this->getIsbn();
 }
 
+/**Compara el identificador con el ISBN de un libro*/
 bool Libro::operator==(std::string identificador) const {
     return this->getIsbn()==identificador;
 };
 
-
+/**Devuelve una cadena con la representación CSV de los datos de un libro*/
 std::string Libro::toCSV() {
 
     std::stringstream ss;
@@ -81,6 +87,8 @@ std::string Libro::toCSV() {
     return linea;
 }
 
+/**Inicializa un Libro a partir de sus datos obtenidos en formato CSV almacenados en línea
+ @pre formato de línea: isbn;año_publicacion;num_edicion;título;editorial;precio*/
 void Libro::fromCSV(std::string linea) {
 
     std::stringstream ss(linea);
@@ -98,16 +106,18 @@ void Libro::fromCSV(std::string linea) {
     
 }
 
+/**Compara si otro ejemplar tiene el mismo ISBN*/
 bool Libro::operator==(const Comparable& e) const {
-    return _isbn==dynamic_cast<const Ejemplar&>(e).getID();
+    return igualA(e);
 }
 
+/**Compara si otro ejemplar tiene el mismo ISBN*/
 bool Libro::igualA(const Comparable& e) const{
     return _isbn==dynamic_cast<const Ejemplar&>(e).getID();
 }
 
-
-
+/**Devuelve una copia en memoria dinámica del objeto
+ @post la copia devuelva debe ser liberada por el llamador*/
 Duplicable* Libro::copia() const{
     return new Libro(*this);
 }
