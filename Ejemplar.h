@@ -40,8 +40,8 @@ public:
 
     //Redeclaración de métodos virtuales puros de interfaces
     //Necesario en versión gcc 4.9.2
-    //virtual bool operator==(const Comparable& c) const =0;
-    //virtual bool operator==(std::string identificador) const =0;
+    virtual bool operator==(const Comparable& c) const =0;
+    virtual bool operator==(std::string identificador) const =0;
     
 private:
     
